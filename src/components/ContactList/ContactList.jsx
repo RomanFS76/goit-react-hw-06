@@ -6,17 +6,12 @@ import { selectContacts } from "../../redux/contactsSlice";
 import { selectNameFilter } from "../../redux/filtersSlice";
 
 const ContactList = () => {
+  const contacts = useSelector(selectContacts);
+  const filterName = useSelector(selectNameFilter);
 
-  const contacts   = useSelector(selectContacts);
-  const filterName   = useSelector(selectNameFilter);
-  
-  
   const visibleUser = contacts.filter((item) =>
-  item.name.toLowerCase().includes(filterName.toLowerCase())
-);
-
-console.log(contacts);
-console.log(filterName);
+    item.name.toLowerCase().includes(filterName.toLowerCase())
+  );
 
   return (
     <ul className={css.contactList}>
@@ -32,5 +27,3 @@ console.log(filterName);
 };
 
 export default ContactList;
-
-
